@@ -1,0 +1,11 @@
+{
+  "name": "rbush-knn",
+  "version": "1.0.0",
+  "description": "KNN (neareset neighbours search) extension for RBush",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vladimir Agafonkin",
+  "license": "ISC"
+}
