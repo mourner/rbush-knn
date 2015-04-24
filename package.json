@@ -4,13 +4,14 @@
   "description": "KNN (neareset neighbours search) extension for RBush",
   "main": "index.js",
   "scripts": {
-    "test": "eslint index.js"
+    "test": "eslint index.js test.js && tape test.js"
   },
   "author": "Vladimir Agafonkin",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^0.19.0",
-    "rbush": "^1.4.0"
+    "rbush": "^1.4.0",
+    "tape": "^4.0.0"
   },
   "dependencies": {
     "tinyqueue": "^1.0.1"
