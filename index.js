@@ -8,21 +8,19 @@ function knn(tree, queryPoint, n) {
     var node = tree.data,
         result = [],
         toBBox = tree.toBBox,
-        i, len, child;
+        child;
 
-    var queue = new Queue(function (a, b) {
-        var box1 = a.children ? a : toBBox(a),
-            box2 = b.children ? b : toBBox(b);
-        return boxDist(queryPoint, box1) - boxDist(queryPoint, box2);
+    var queue = new Queue(null, function (a, b) {
+        return boxDist(queryPoint, a.bbox) - boxDist(queryPoint, b.bbox);
     });
 
     while (node) {
-        for (i = 0, len = node.children.length; i < len; i++) {
+        for (var i = 0; i < node.children.length; i++) {
             child = node.children[i];
-            queue.push(child);
+            queue.push(node.leaf ? {item: child, bbox: toBBox(child), _knnItem: true} : child);
         }
 
-        while (!queue.peek().children && result.length < n) result.push(queue.pop());
+        while (queue.peek()._knnItem && result.length < n) result.push(queue.pop().item);
         if (result.length === n) break;
 
         node = queue.pop();
