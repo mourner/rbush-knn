@@ -1,17 +1,17 @@
 {
   "name": "rbush-knn",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "k-neareset neighbors search for RBush",
   "main": "index.js",
   "scripts": {
     "test": "eslint index.js test.js && tape test.js"
   },
   "keywords": [
-  	"rbush",
-  	"knn",
-  	"k neareset neighbors",
-  	"data structure",
-  	"query"
+    "rbush",
+    "knn",
+    "k neareset neighbors",
+    "data structure",
+    "query"
   ],
   "author": "Vladimir Agafonkin",
   "license": "ISC",
