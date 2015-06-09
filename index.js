@@ -20,7 +20,7 @@ function knn(tree, queryPoint, n) {
             queue.push(node.leaf ? {item: child, bbox: toBBox(child), _knnItem: true} : child);
         }
 
-        while (queue.peek()._knnItem && result.length < n) result.push(queue.pop().item);
+        while (queue.length && queue.peek()._knnItem && result.length < n) result.push(queue.pop().item);
         if (result.length === n) break;
 
         node = queue.pop();

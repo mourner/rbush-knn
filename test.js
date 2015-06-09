@@ -28,3 +28,12 @@ test('finds n neighbours', function (t) {
         [29,45,31,47],[39,52,39,56],[57,36,61,40]]);
     t.end();
 });
+
+test('does not throw if requesting too many items', function (t) {
+    var tree = rbush().load(data);
+    t.doesNotThrow(function () {
+        var result = knn(tree, [40, 40], 1000);
+        t.equal(result.length, data.length);
+    });
+    t.end();
+});
