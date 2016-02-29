@@ -4,7 +4,7 @@
   "description": "k-neareset neighbors search for RBush",
   "main": "index.js",
   "scripts": {
-    "test": "eslint index.js test.js && tape test.js"
+    "test": "eslint *.js && tape test.js"
   },
   "keywords": [
     "rbush",
@@ -16,12 +16,16 @@
   "author": "Vladimir Agafonkin",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^0.22.1",
-    "rbush": "^1.4.0",
-    "tape": "^4.0.0"
+    "eslint": "^2.2.0",
+    "eslint-config-mourner": "^2.0.0",
+    "rbush": "^1.4.2",
+    "tape": "^4.4.0"
   },
   "dependencies": {
-    "tinyqueue": "^1.0.1"
+    "tinyqueue": "^1.1.0"
+  },
+  "eslintConfig": {
+    "extends": "mourner"
   },
   "repository": "mourner/rbush-knn"
 }
