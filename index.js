@@ -4,7 +4,7 @@ var Queue = require('tinyqueue');
 
 module.exports = knn;
 
-function knn(tree, queryPoint, n) {
+function knn(tree, queryPoint, n, predicate) {
     var node = tree.data,
         result = [],
         toBBox = tree.toBBox,
@@ -23,7 +23,9 @@ function knn(tree, queryPoint, n) {
         }
 
         while (queue.length && queue.peek().isItem) {
-            result.push(queue.pop().node);
+            var candidate = queue.pop().node;
+            if (!predicate || predicate(candidate))
+                result.push(candidate);
             if (result.length === n) return result;
         }
 
