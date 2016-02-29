@@ -10,7 +10,19 @@ var tree = rbush().load(data); // create an RBush index
 var neighbors = knn(tree, [40, 40], 10); // return 10 nearest items around point [40, 40]
 ```
 
+You can optionally pass a filter function to find k neighbors that satisfy a certain condition:
+
+```js
+var neighbors = knn(tree, [40, 40], 10, function (item) {
+    return item.foo === 'bar';
+});
+```
+
 ### Changelog
+
+##### 1.1.0 (Feb 29, 2015)
+
+- Add an optional filter function argument.
 
 ##### 1.0.2 (Jun 25, 2015)
 
