@@ -37,3 +37,24 @@ test('does not throw if requesting too many items', function (t) {
     });
     t.end();
 });
+
+var richData = [[1,2,1,2,{version: 1}],[3,3,3,3,{version: 2}],[5,5,5,5,{version: 3}],[4,2,4,2,{version: 4}],
+    [2,4,2,4,{version: 5}],[5,3,5,3,{version: 6}]];
+
+test('find n neighbours that do satisfy a given predicate', function (t) {
+    var tree = rbush().load(richData);
+    var result = knn(tree, [2, 4], 1, function (item) {
+        return item[item.length - 1].version < 5;
+    });
+    if (result.length === 1) {
+        var item = result[0];
+        if (item[0] === 3 && item[1] === 3 && item[2] === 3 && item[3] === 3 && item[4].version === 2) {
+            t.pass('Found the correct item');
+        } else {
+            t.fail('Could not find the correct item');
+        }
+    } else {
+        t.fail('Could not find the correct item');
+    }
+    t.end();
+});
