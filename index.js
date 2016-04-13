@@ -26,7 +26,7 @@ function knn(tree, queryPoint, n, predicate) {
             var candidate = queue.pop().node;
             if (!predicate || predicate(candidate))
                 result.push(candidate);
-            if (result.length === n) return result;
+            if (n && result.length === n) return result;
         }
 
         node = queue.pop();
