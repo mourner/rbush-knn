@@ -4,7 +4,7 @@ var Queue = require('tinyqueue');
 
 module.exports = knn;
 
-function knn(tree, queryPoint, n, predicate) {
+function knn(tree, x, y, n, predicate) {
     var node = tree.data,
         result = [],
         toBBox = tree.toBBox,
@@ -18,7 +18,7 @@ function knn(tree, queryPoint, n, predicate) {
             queue.push({
                 node: child,
                 isItem: node.leaf,
-                dist: boxDist(queryPoint, node.leaf ? toBBox(child) : child.bbox)
+                dist: boxDist(x, y, node.leaf ? toBBox(child) : child)
             });
         }
 
@@ -40,9 +40,9 @@ function compareDist(a, b) {
     return a.dist - b.dist;
 }
 
-function boxDist(p, box) {
-    var dx = axisDist(p[0], box[0], box[2]),
-        dy = axisDist(p[1], box[1], box[3]);
+function boxDist(x, y, box) {
+    var dx = axisDist(x, box.minX, box.maxX),
+        dy = axisDist(y, box.minY, box.maxY);
     return dx * dx + dy * dy;
 }
 

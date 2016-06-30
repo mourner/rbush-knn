@@ -7,18 +7,33 @@ Implements a simple depth-first kNN search algorithm using a priority queue.
 var knn = require('rbush-knn');
 
 var tree = rbush().load(data); // create an RBush index
-var neighbors = knn(tree, [40, 40], 10); // return 10 nearest items around point [40, 40]
+var neighbors = knn(tree, 40, 40, 10); // return 10 nearest items around point [40, 40]
 ```
 
 You can optionally pass a filter function to find k neighbors that satisfy a certain condition:
 
 ```js
-var neighbors = knn(tree, [40, 40], 10, function (item) {
+var neighbors = knn(tree, 40, 40, 10, function (item) {
     return item.foo === 'bar';
 });
 ```
 
+### API
+
+**knn(tree, x, y, [k, filterFn])**
+
+- `tree`: an RBush tree
+- `x`, `y`: query coordinates
+- `k`: number of neighbors to search for (`Infinity` by default)
+- `filterFn`: optional filter function; `k` nearest items where `filterFn(item) === true` will be returned.
+
 ### Changelog
+
+##### 2.0.0 (Jun 30, 2016)
+
+- **Breaking**: updated to be compatible with RBush 2.0.
+- **Breaking**: signature changed from `tree, [x, y], k, filterFn` to `tree, x, y, k, filterFn`
+- Improved performance by ~20%.
 
 ##### 1.1.0 (Feb 29, 2015)
 
