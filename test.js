@@ -47,14 +47,14 @@ test('does not throw if requesting too many items', function (t) {
     t.end();
 });
 
-test('finds all neighbors for cutoff distance', function(t) {
+test('finds all neighbors for cutoff distance', function (t) {
     var tree = rbush().load(data);
     var result = knn(tree, 40, 40, 0, null, 10);
     t.same(result, [[38,39,39,39],[35,39,38,40]].map(arrToBox));
     t.end();
 });
 
-test('finds n neighbors for cutoff distance', function(t) {
+test('finds n neighbors for cutoff distance', function (t) {
     var tree = rbush().load(data);
     var result = knn(tree, 40, 40, 1, null, 10);
     t.same(result, [[38,39,39,39]].map(arrToBox));
