@@ -4,26 +4,29 @@ var Queue = require('tinyqueue');
 
 module.exports = knn;
 
-function knn(tree, x, y, n, predicate) {
+function knn(tree, x, y, n, predicate, maxDistance) {
     var node = tree.data,
         result = [],
         toBBox = tree.toBBox,
-        i, child;
+        i, child, dist, candidate;
 
     var queue = new Queue(null, compareDist);
 
     while (node) {
         for (i = 0; i < node.children.length; i++) {
             child = node.children[i];
-            queue.push({
-                node: child,
-                isItem: node.leaf,
-                dist: boxDist(x, y, node.leaf ? toBBox(child) : child)
-            });
+            dist = boxDist(x, y, node.leaf ? toBBox(child) : child);
+            if (!maxDistance || dist <= maxDistance) {
+                queue.push({
+                    node: child,
+                    isItem: node.leaf,
+                    dist: dist
+                });
+            }
         }
 
         while (queue.length && queue.peek().isItem) {
-            var candidate = queue.pop().node;
+            candidate = queue.pop().node;
             if (!predicate || predicate(candidate))
                 result.push(candidate);
             if (n && result.length === n) return result;
