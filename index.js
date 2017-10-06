@@ -3,6 +3,7 @@
 var Queue = require('tinyqueue');
 
 module.exports = knn;
+module.exports.default = knn;
 
 function knn(tree, x, y, n, predicate, maxDistance) {
     var node = tree.data,
