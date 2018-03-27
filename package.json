@@ -16,16 +16,16 @@
   "author": "Vladimir Agafonkin",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^2.2.0",
-    "eslint-config-mourner": "^2.0.0",
-    "rbush": "^2.0.0",
-    "tape": "^4.4.0"
+    "eslint": "^4.19.1",
+    "eslint-config-mourner": "^2.0.3",
+    "rbush": "^2.0.2",
+    "tape": "^4.9.0"
   },
   "dependencies": {
-    "tinyqueue": "^1.1.0"
+    "tinyqueue": "^1.2.3"
   },
   "peerDependencies": {
-    "rbush": "^2.0.0"
+    "rbush": "^2.0.2"
   },
   "eslintConfig": {
     "extends": "mourner"
