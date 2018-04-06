@@ -3,8 +3,13 @@
   "version": "2.1.0",
   "description": "k-neareset neighbors search for RBush",
   "main": "index.js",
+  "jsdelivr": "rbush-knn.js",
+  "unpkg": "rbush-knn.js",
   "scripts": {
-    "test": "eslint *.js && tape test.js"
+    "test": "eslint *.js && tape test.js",
+    "build": "browserify index.js -s knn -o rbush-knn.js",
+    "build-min": "browserify index.js -s knn | uglifyjs -c warnings=false -m > rbush-knn.min.js",
+    "prepare": "npm run build && npm run build-min"
   },
   "keywords": [
     "rbush",
@@ -16,10 +21,12 @@
   "author": "Vladimir Agafonkin",
   "license": "ISC",
   "devDependencies": {
+    "browserify": "^16.1.1",
     "eslint": "^4.19.1",
     "eslint-config-mourner": "^2.0.3",
     "rbush": "^2.0.2",
-    "tape": "^4.9.0"
+    "tape": "^4.9.0",
+    "uglify-js": "^3.3.18"
   },
   "dependencies": {
     "tinyqueue": "^1.2.3"
@@ -30,5 +37,9 @@
   "eslintConfig": {
     "extends": "mourner"
   },
+  "files": [
+      "knn.js",
+      "knn.min.js"
+  ],
   "repository": "mourner/rbush-knn"
 }
