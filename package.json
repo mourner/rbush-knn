@@ -6,7 +6,7 @@
   "jsdelivr": "rbush-knn.js",
   "unpkg": "rbush-knn.js",
   "scripts": {
-    "test": "eslint *.js && tape test.js",
+    "test": "eslint index.js test.js bench.js && tape test.js",
     "build": "browserify index.js -s knn -o rbush-knn.js",
     "build-min": "browserify index.js -s knn | uglifyjs -c warnings=false -m > rbush-knn.min.js",
     "prepare": "npm run build && npm run build-min"
@@ -38,8 +38,8 @@
     "extends": "mourner"
   },
   "files": [
-      "knn.js",
-      "knn.min.js"
+      "rbush-knn.js",
+      "rbush-knn.min.js"
   ],
   "repository": "mourner/rbush-knn"
 }
