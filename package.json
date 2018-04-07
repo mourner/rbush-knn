@@ -3,8 +3,8 @@
   "version": "2.1.0",
   "description": "k-neareset neighbors search for RBush",
   "main": "index.js",
-  "jsdelivr": "rbush-knn.js",
-  "unpkg": "rbush-knn.js",
+  "jsdelivr": "rbush-knn.min.js",
+  "unpkg": "rbush-knn.min.js",
   "scripts": {
     "test": "eslint index.js test.js bench.js && tape test.js",
     "build": "browserify index.js -s knn -o rbush-knn.js",
