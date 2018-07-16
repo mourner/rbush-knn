@@ -17,7 +17,7 @@ function knn(tree, x, y, n, predicate, maxDistance) {
         for (i = 0; i < node.children.length; i++) {
             child = node.children[i];
             dist = boxDist(x, y, node.leaf ? toBBox(child) : child);
-            if (!maxDistance || dist <= maxDistance) {
+            if (!maxDistance || dist <= maxDistance * maxDistance) {
                 queue.push({
                     node: child,
                     isItem: node.leaf,
