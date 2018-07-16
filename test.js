@@ -76,7 +76,7 @@ test('verify maxDistance excludes items too far away, in order to adhere to pyth
     var tree = rbush().load(pythData);
     // sqrt(9^2+9^2)~=12.727
     var result = knn(tree, 0, 0, 1000, null, 12.6);
-    t.same(result, [[0, 0, 0, 0]].map(arrToBox));
+    t.same(result, [[0,0,0,0]].map(arrToBox));
     t.end();
 });
 
