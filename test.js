@@ -50,7 +50,7 @@ test('does not throw if requesting too many items', function (t) {
 test('finds all neighbors for maxDistance', function (t) {
     var tree = rbush().load(data);
     var result = knn(tree, 40, 40, 0, null, 10);
-    t.same(result, [[38, 39, 39, 39], [35, 39, 38, 40],[34, 43, 36, 44], [29, 42, 33, 42], [48, 38, 48, 40], [31, 47, 33, 50], [34, 29, 34, 32]].map(arrToBox));
+    t.same(result, [[38,39,39,39],[35,39,38,40],[34,43,36,44],[29,42,33,42],[48,38,48,40],[31,47,33,50],[34,29,34,32]].map(arrToBox));
     t.end();
 });
 
@@ -65,7 +65,7 @@ test('does not throw if requesting too many items for maxDistance', function (t)
     var tree = rbush().load(data);
     t.doesNotThrow(function () {
         var result = knn(tree, 40, 40, 1000, null, 10);
-        t.same(result, [[38, 39, 39, 39], [35, 39, 38, 40], [34, 43, 36, 44], [29, 42, 33, 42], [48, 38, 48, 40], [31, 47, 33, 50], [34, 29, 34, 32]].map(arrToBox));
+        t.same(result, [[38,39,39,39],[35,39,38,40],[34,43,36,44],[29,42,33,42],[48,38,48,40],[31,47,33,50],[34,29,34,32]].map(arrToBox));
     });
     t.end();
 });
