@@ -26,7 +26,7 @@
     "eslint-config-mourner": "^2.0.3",
     "rbush": "^2.0.2",
     "tape": "^4.9.0",
-    "uglify-js": "^3.3.18"
+    "uglify-js": "~3.3.28"
   },
   "dependencies": {
     "tinyqueue": "^1.2.3"
@@ -38,8 +38,8 @@
     "extends": "mourner"
   },
   "files": [
-      "rbush-knn.js",
-      "rbush-knn.min.js"
+    "rbush-knn.js",
+    "rbush-knn.min.js"
   ],
   "repository": "mourner/rbush-knn"
 }

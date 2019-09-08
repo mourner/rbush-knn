@@ -4,10 +4,11 @@ _k_-nearest neighbors search for [RBush](https://github.com/mourner/rbush).
 Implements a simple depth-first kNN search algorithm using a priority queue.
 
 ```js
-var rbush = require('rbush');
+var RBush = require('rbush');
 var knn = require('rbush-knn');
 
-var tree = rbush().load(data); // create an RBush index
+var tree = new RBush(); // create RBush tree
+tree.load(data); // bulk insert
 var neighbors = knn(tree, 40, 40, 10); // return 10 nearest items around point [40, 40]
 ```
 
