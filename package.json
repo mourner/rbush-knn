@@ -1,6 +1,6 @@
 {
   "name": "rbush-knn",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "k-neareset neighbors search for RBush",
   "main": "index.js",
   "jsdelivr": "rbush-knn.min.js",
@@ -24,7 +24,7 @@
     "browserify": "^16.1.1",
     "eslint": "^4.19.1",
     "eslint-config-mourner": "^2.0.3",
-    "rbush": "^2.0.2",
+    "rbush": "^3.0.0",
     "tape": "^4.9.0",
     "uglify-js": "~3.3.28"
   },
@@ -32,7 +32,7 @@
     "tinyqueue": "^1.2.3"
   },
   "peerDependencies": {
-    "rbush": "^2.0.2"
+    "rbush": "2.0.2 - 3"
   },
   "eslintConfig": {
     "extends": "mourner"
