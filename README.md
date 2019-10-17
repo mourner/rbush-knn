@@ -32,6 +32,10 @@ var neighbors = knn(tree, 40, 40, 10, function (item) {
 
 ### Changelog
 
+##### 2.2.0 (Oct 17, 2019)
+
+- Updated to be compatible with RBush 3.0.
+
 ##### 2.0.0 (Jun 30, 2016)
 
 - **Breaking**: updated to be compatible with RBush 2.0.
