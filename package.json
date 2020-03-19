@@ -31,9 +31,6 @@
   "dependencies": {
     "tinyqueue": "^2.0.3"
   },
-  "peerDependencies": {
-    "rbush": "^3.0.1"
-  },
   "eslintConfig": {
     "extends": "mourner"
   },
