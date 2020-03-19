@@ -1,9 +1,13 @@
 'use strict';
 
-var rbush = require('rbush');
+var RBush = require('rbush');
 var test = require('tape');
 
 var knn = require('./');
+
+function rbush() {
+    return new RBush();
+}
 
 /*eslint comma-spacing: 0 */
 

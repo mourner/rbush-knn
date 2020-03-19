@@ -8,7 +8,7 @@
   "scripts": {
     "test": "eslint index.js test.js bench.js && tape test.js",
     "build": "browserify index.js -s knn -o rbush-knn.js",
-    "build-min": "browserify index.js -s knn | uglifyjs -c warnings=false -m > rbush-knn.min.js",
+    "build-min": "browserify index.js -s knn | uglifyjs -c -m > rbush-knn.min.js",
     "prepare": "npm run build && npm run build-min"
   },
   "keywords": [
@@ -21,18 +21,18 @@
   "author": "Vladimir Agafonkin",
   "license": "ISC",
   "devDependencies": {
-    "browserify": "^16.1.1",
-    "eslint": "^4.19.1",
+    "browserify": "^16.5.0",
+    "eslint": "^6.8.0",
     "eslint-config-mourner": "^2.0.3",
-    "rbush": "^2.0.2",
-    "tape": "^4.9.0",
-    "uglify-js": "~3.3.28"
+    "rbush": "^3.0.1",
+    "tape": "^4.13.2",
+    "uglify-js": "~3.8.0"
   },
   "dependencies": {
-    "tinyqueue": "^1.2.3"
+    "tinyqueue": "^2.0.3"
   },
   "peerDependencies": {
-    "rbush": "^2.0.2"
+    "rbush": "^3.0.1"
   },
   "eslintConfig": {
     "extends": "mourner"

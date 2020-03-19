@@ -11,7 +11,7 @@ function knn(tree, x, y, n, predicate, maxDistance) {
         toBBox = tree.toBBox,
         i, child, dist, candidate;
 
-    var queue = new Queue(null, compareDist);
+    var queue = new Queue(undefined, compareDist);
 
     while (node) {
         for (i = 0; i < node.children.length; i++) {
