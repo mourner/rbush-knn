@@ -1,6 +1,6 @@
 'use strict';
 
-var Queue = require('tinyqueue');
+var Queue = require('tinyqueue').default;
 
 module.exports = knn;
 module.exports.default = knn;
