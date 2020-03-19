@@ -32,6 +32,11 @@ var neighbors = knn(tree, 40, 40, 10, function (item) {
 
 ### Changelog
 
+##### 3.0.0 (Mar 19, 2020)
+
+- **Breaking**: fixed `maxDistance` argument — now it's taken into account correctly (rather than being used as a max squared distance). h/t [@AleksandarFaraj](https://github.com/AleksandarFaraj)
+- Updated dependencies.
+
 ##### 2.0.0 (Jun 30, 2016)
 
 - **Breaking**: updated to be compatible with RBush 2.0.
