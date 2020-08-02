@@ -2,14 +2,16 @@
   "name": "rbush-knn",
   "version": "3.0.1",
   "description": "k-neareset neighbors search for RBush",
-  "main": "index.js",
+  "main": "rbush-knn.js",
+  "module": "index.js",
+  "browser": "rbush-knn.min.js",
   "jsdelivr": "rbush-knn.min.js",
   "unpkg": "rbush-knn.min.js",
   "scripts": {
-    "test": "eslint index.js test.js bench.js && tape test.js",
-    "build": "browserify index.js -s knn -o rbush-knn.js",
-    "build-min": "browserify index.js -s knn | uglifyjs -c -m > rbush-knn.min.js",
-    "prepare": "npm run build && npm run build-min"
+    "bench": "node -r esm bench.js",
+    "test": "eslint index.js test.js bench.js && tape -r esm test.js",
+    "build": "rollup -c",
+    "prepare": "npm run build"
   },
   "keywords": [
     "rbush",
@@ -21,20 +23,26 @@
   "author": "Vladimir Agafonkin",
   "license": "ISC",
   "devDependencies": {
-    "browserify": "^16.5.0",
+    "@rollup/plugin-node-resolve": "^8.4.0",
     "eslint": "^6.8.0",
     "eslint-config-mourner": "^2.0.3",
+    "esm": "^3.2.25",
     "rbush": "^3.0.1",
-    "tape": "^4.13.2",
-    "uglify-js": "~3.8.0"
+    "rollup": "^2.23.0",
+    "rollup-plugin-terser": "^6.1.0",
+    "tape": "^4.13.2"
   },
   "dependencies": {
     "tinyqueue": "^2.0.3"
   },
   "eslintConfig": {
-    "extends": "mourner"
+    "extends": "mourner",
+    "parserOptions": {
+      "sourceType": "module"
+    }
   },
   "files": [
+    "index.js",
     "rbush-knn.js",
     "rbush-knn.min.js"
   ],

@@ -1,7 +1,5 @@
-'use strict';
-
-var rbush = require('rbush'),
-    knn = require('./');
+import RBush from 'rbush';
+import knn from './index';
 
 var N = 200000,
     M = 20000,
@@ -15,7 +13,7 @@ for (var i = 0; i < N; i++) {
 }
 
 console.time('load ' + N + ' points');
-var tree = rbush().load(points);
+var tree = new RBush().load(points);
 console.timeEnd('load ' + N + ' points');
 
 console.time('knn query ' + K + ' neighbors x ' + M);
