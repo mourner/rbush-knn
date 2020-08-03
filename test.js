@@ -1,9 +1,7 @@
-'use strict';
+import RBush from 'rbush';
+import test from 'tape';
 
-var RBush = require('rbush');
-var test = require('tape');
-
-var knn = require('./');
+import knn from './index';
 
 function rbush() {
     return new RBush();
