@@ -8,29 +8,29 @@
   "jsdelivr": "rbush-knn.min.js",
   "unpkg": "rbush-knn.min.js",
   "scripts": {
-    "bench": "node -r esm bench.js",
-    "test": "eslint index.js test.js bench.js && tape -r esm test.js",
+    "bench": "node bench.js",
+    "test": "eslint index.js test.js bench.js && tape test.js",
     "build": "rollup -c",
     "prepare": "npm run build"
   },
   "keywords": [
     "rbush",
     "knn",
-    "k neareset neighbors",
+    "k-nearest neighbors",
     "data structure",
     "query"
   ],
   "author": "Vladimir Agafonkin",
   "license": "ISC",
+  "type": "module",
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^8.4.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
     "eslint": "^6.8.0",
     "eslint-config-mourner": "^2.0.3",
-    "esm": "^3.2.25",
-    "rbush": "^3.0.1",
-    "rollup": "^2.23.0",
-    "rollup-plugin-terser": "^6.1.0",
-    "tape": "^4.13.2"
+    "rbush": "^4.0.0",
+    "rollup": "^4.18.0",
+    "tape": "^5.8.1"
   },
   "dependencies": {
     "tinyqueue": "^2.0.3"

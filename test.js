@@ -1,7 +1,7 @@
 import RBush from 'rbush';
 import test from 'tape';
 
-import knn from './index';
+import knn from './index.js';
 
 function rbush() {
     return new RBush();
