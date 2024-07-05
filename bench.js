@@ -1,5 +1,5 @@
 import RBush from 'rbush';
-import knn from './index';
+import knn from './index.js';
 
 var N = 200000,
     M = 20000,
