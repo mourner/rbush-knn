@@ -1,6 +1,6 @@
 {
   "name": "rbush-knn",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "k-neareset neighbors search for RBush",
   "main": "rbush-knn.js",
   "module": "index.js",
