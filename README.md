@@ -1,4 +1,4 @@
-## rbush-knn [![Build Status](https://travis-ci.org/mourner/rbush-knn.svg?branch=master)](https://travis-ci.org/mourner/rbush-knn)
+## rbush-knn
 
 _k_-nearest neighbors search for [RBush](https://github.com/mourner/rbush).
 Implements a simple depth-first kNN search algorithm using a priority queue.

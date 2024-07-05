@@ -1,5 +1,6 @@
 import RBush from 'rbush';
-import test from 'tape';
+import test from 'node:test';
+import assert from 'node:assert/strict';
 
 import knn from './index.js';
 
@@ -32,62 +33,55 @@ var data = [[87,55,87,56],[38,13,39,16],[7,47,8,47],[89,9,91,12],[4,58,5,60],[0,
     [1,14,1,14],[33,77,34,77],[94,56,98,59],[75,25,78,26],[17,73,20,74],[11,3,12,4],[45,12,47,12],[38,39,39,39],
     [99,3,103,5],[41,92,44,96],[79,40,79,41],[29,2,29,4]].map(arrToBox);
 
-test('finds n neighbours', function (t) {
+test('finds n neighbours', function () {
     var tree = rbush().load(data);
     var result = knn(tree, 40, 40, 10);
-    t.same(result, [[38,39,39,39],[35,39,38,40],[34,43,36,44],[29,42,33,42],[48,38,48,40],[31,47,33,50],[34,29,34,32],
+    assert.deepEqual(result, [[38,39,39,39],[35,39,38,40],[34,43,36,44],[29,42,33,42],[48,38,48,40],[31,47,33,50],[34,29,34,32],
         [29,45,31,47],[39,52,39,56],[57,36,61,40]].map(arrToBox));
-    t.end();
 });
 
-test('does not throw if requesting too many items', function (t) {
+test('does not throw if requesting too many items', function () {
     var tree = rbush().load(data);
-    t.doesNotThrow(function () {
+    assert.doesNotThrow(function () {
         var result = knn(tree, 40, 40, 1000);
-        t.equal(result.length, data.length);
+        assert.equal(result.length, data.length);
     });
-    t.end();
 });
 
-test('finds all neighbors for maxDistance', function (t) {
+test('finds all neighbors for maxDistance', function () {
     var tree = rbush().load(data);
     var result = knn(tree, 40, 40, 0, null, 10);
-    t.same(result, [[38,39,39,39],[35,39,38,40],[34,43,36,44],[29,42,33,42],[48,38,48,40],[31,47,33,50],[34,29,34,32]].map(arrToBox));
-    t.end();
+    assert.deepEqual(result, [[38,39,39,39],[35,39,38,40],[34,43,36,44],[29,42,33,42],[48,38,48,40],[31,47,33,50],[34,29,34,32]].map(arrToBox));
 });
 
-test('finds n neighbors for maxDistance', function (t) {
+test('finds n neighbors for maxDistance', function () {
     var tree = rbush().load(data);
     var result = knn(tree, 40, 40, 1, null, 10);
-    t.same(result, [[38,39,39,39]].map(arrToBox));
-    t.end();
+    assert.deepEqual(result, [[38,39,39,39]].map(arrToBox));
 });
 
-test('does not throw if requesting too many items for maxDistance', function (t) {
+test('does not throw if requesting too many items for maxDistance', function () {
     var tree = rbush().load(data);
-    t.doesNotThrow(function () {
+    assert.doesNotThrow(function () {
         var result = knn(tree, 40, 40, 1000, null, 10);
-        t.same(result, [[38,39,39,39],[35,39,38,40],[34,43,36,44],[29,42,33,42],[48,38,48,40],[31,47,33,50],[34,29,34,32]].map(arrToBox));
+        assert.deepEqual(result, [[38,39,39,39],[35,39,38,40],[34,43,36,44],[29,42,33,42],[48,38,48,40],[31,47,33,50],[34,29,34,32]].map(arrToBox));
     });
-    t.end();
 });
 
 var pythData = [[0,0,0,0],[9,9,9,9],[12,12,12,12],[13,14,19,11]].map(arrToBox);
 
-test('verify maxDistance excludes items too far away, in order to adhere to pythagoras theorem a^2+b^2=c^2', function (t) {
+test('verify maxDistance excludes items too far away, in order to adhere to pythagoras theorem a^2+b^2=c^2', function () {
     var tree = rbush().load(pythData);
     // sqrt(9^2+9^2)~=12.727
     var result = knn(tree, 0, 0, 1000, null, 12.6);
-    t.same(result, [[0,0,0,0]].map(arrToBox));
-    t.end();
+    assert.deepEqual(result, [[0,0,0,0]].map(arrToBox));
 });
 
-test('verify maxDistance includes all items within range, in order to adhere to pythagoras theorem a^2+b^2=c^2', function (t) {
+test('verify maxDistance includes all items within range, in order to adhere to pythagoras theorem a^2+b^2=c^2', function () {
     var tree = rbush().load(pythData);
     // sqrt(9^2+9^2)~=12.727
     var result = knn(tree, 0, 0, 1000, null, 12.8);
-    t.same(result, [[0,0,0,0],[9,9,9,9]].map(arrToBox));
-    t.end();
+    assert.deepEqual(result, [[0,0,0,0],[9,9,9,9]].map(arrToBox));
 });
 
 var richData = [[1,2,1,2],[3,3,3,3],[5,5,5,5],[4,2,4,2],[2,4,2,4],[5,3,5,3]].map(function (a, i) {
@@ -96,7 +90,7 @@ var richData = [[1,2,1,2],[3,3,3,3],[5,5,5,5],[4,2,4,2],[2,4,2,4],[5,3,5,3]].map
     return item;
 });
 
-test('find n neighbours that do satisfy a given predicate', function (t) {
+test('find n neighbours that do satisfy a given predicate', function () {
     var tree = rbush().load(richData);
     var result = knn(tree, 2, 4, 1, function (item) {
         return item.version < 5;
@@ -104,13 +98,11 @@ test('find n neighbours that do satisfy a given predicate', function (t) {
     if (result.length === 1) {
         var item = result[0];
         if (item.minX === 3 && item.minY === 3 && item.maxX === 3 && item.maxY === 3 && item.version === 2) {
-            t.pass('Found the correct item');
+            // OK
         } else {
-            console.warn(item);
-            t.fail('Could not find the correct item');
+            assert.fail('Could not find the correct item, found ' + JSON.stringify(item));
         }
     } else {
-        t.fail('Could not find the correct item');
+        assert.fail('Could not find the correct item');
     }
-    t.end();
 });
