@@ -11,7 +11,8 @@ export default function knn(tree, x, y, n, predicate, maxDistance) {
         for (let i = 0; i < node.children.length; i++) {
             const child = node.children[i];
             const dist = boxDist(x, y, node.leaf ? toBBox(child) : child);
-            if (!maxDistance || dist <= maxDistance * maxDistance) {
+            // 0 is a real limit. Only a missing maxDistance means no limit.
+            if (maxDistance === undefined || maxDistance === null || dist <= maxDistance * maxDistance) {
                 queue.push({
                     node: child,
                     isItem: node.leaf,

@@ -84,6 +84,12 @@ test('verify maxDistance includes all items within range, in order to adhere to 
     assert.deepEqual(result, [[0,0,0,0],[9,9,9,9]].map(arrToBox));
 });
 
+test('maxDistance of 0 returns only items at the query point', () => {
+    const tree = rbush().load(pythData);
+    const result = knn(tree, 0, 0, 1000, null, 0);
+    assert.deepEqual(result, [[0,0,0,0]].map(arrToBox));
+});
+
 const richData = [[1,2,1,2],[3,3,3,3],[5,5,5,5],[4,2,4,2],[2,4,2,4],[5,3,5,3]].map((a, i) => {
     const item = arrToBox(a);
     item.version = i + 1;
